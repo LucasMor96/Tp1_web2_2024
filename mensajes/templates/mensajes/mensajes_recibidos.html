@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes Recibidos</title>
+    <link rel="stylesheet" href="{% static 'mensajes/styles.css' %}">
+</head>
+<body>
+    <header style="align-content: center;">
+        <h4>Mensajes Recibidos</h4>
+        <!-- Formulario para la búsqueda -->
+        <form method="get" action="{% url 'mensajes_recibidos' %}">
+            <div class="entrada">
+                <input type="text" name="barraBuscar" placeholder="Buscar por destinatario" value="{{ request.GET.barraBuscar }}">
+            </div>
+            <button type="submit">Buscar</button>
+        </form>
+    </header>
+    <div class="contenedor">
+        <ul>
+            {% if no_coincidencias %}
+                <p>No hay coincidencias</p>
+            {% elif not mensajes %}
+                <p>Aún no hay mensajes recibidos</p>
+            {% else %}
+                <h4 class="subtitle">Mensajes recibidos:</h4>
+                {% for mensaje in mensajes %}
+                    <li class="mensaje">
+                        <div class="mensaje-contenido">
+                            <p><strong>Fecha:</strong> {{ mensaje.fecha_envio }}</p>
+                            <p><strong>De:</strong> <i>{{ mensaje.remitente }}</i> &nbsp; <strong>Para:</strong> <i>{{ mensaje.destinatario }}</i></p>
+                            <p><strong>Mensaje:</strong> {{ mensaje.texto }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+        <br>
+        <a href="{% url 'inicio' %}" class="btn">Volver al inicio</a>
+    </div>
+</body>
+</html>

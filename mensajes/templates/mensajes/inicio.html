@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Tablero de Mensajes</title>
+    <link rel="stylesheet" href="{% static 'mensajes/styles.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <header class="main-header">
+            <h1>Bienvenido al Tablero de Mensajes</h1>
+            <h2 class="subtitle">Primer Trabajo Práctico</h2>
+            <h3 class="subtitle">Aplicación web utilizando Django</h3>
+        </header>
+        <main>
+            <p>Seleccione una opción para comenzar:</p>
+            <div class="nav-links">
+                <a href="/mensajes/recibidos/" class="btn">Ver Mensajes Recibidos</a>
+                <a href="/mensajes/enviar/" class="btn">Enviar Mensaje</a>
+            </div>
+        </main>
+        <footer class="main-footer">
+            <p>Profesor: Lic. Julio C. Casco</p>
+            <p>Alumno: Moraga Lucas</p>
+        </footer>
+    </div>
+</body>
+</html>
